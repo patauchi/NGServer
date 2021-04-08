@@ -14,9 +14,29 @@ class CreateNewsTable extends Migration
     public function up()
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('description');
+            $table->bigIncrements('id');
+            $table->string('metaTitle');
+            $table->text('metaDescription');
+            $table->string('pageSlug');
+            $table->string('category');
+            $table->string('subcategory');
+            $table->text('title');
+            $table->text('subtitle');
+            $table->text('shortDescription');
+            $table->text('largDescription');
+            $table->string('authorNews');
+            $table->string('imageTitle');
+            $table->string('imageSlug');
+            $table->string('imageAuthor');
+            $table->string('status');
+            $table->string('homeMain');
+            $table->string('newsMain');
+
+            $table->unsignedBigInteger('categorie_id')->nullable();
+            $table->foreign('categorie_id')
+                ->references('id')->on('newscategories')
+                ->onDelete('set null');
+
             $table->timestamps();
         });
     }

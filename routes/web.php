@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'home')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('projects','ProjectController');
 
@@ -35,5 +35,8 @@ Route::resource('field-guide', 'SpeciesController')
 // Route::patch('/field-guide/{species}','SpeciesController@update')->name('species.update');
 // Route::get('/field-guide/{species}','SpeciesController@show')->name('species.show');
 // Route::delete('/field-guide/{species}','SpeciesController@destroy')->name('species.destroy');
+
+Route::get('/test','NewsController@test');
+
 
 Auth::routes();

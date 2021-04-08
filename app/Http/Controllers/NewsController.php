@@ -9,6 +9,14 @@ use App\Http\Requests\SaveAllRequest;
 
 class NewsController extends Controller
 {
+
+    public function __construct ()
+    {
+        # code...
+        $this->middleware('auth')->except('index','show');
+
+    }
+
     public function index()
     {
     	$news = News::get();
@@ -25,8 +33,23 @@ class NewsController extends Controller
     public function store(SaveAllRequest $request)
     {
     	news::create([
-    		'title'=>request('title'),
-    		'description'=>request('description')
+    		'metaTitle'=>request('metaTitle'),
+            'metaDescription'=>request('metaDescription'),
+            'pageSlug'=>request('pageSlug'),
+            'category'=>request('category'),
+            'subcategory'=>request('subcategory'),
+            'title'=>request('title'),
+            'subtitle'=>request('subtitle'),
+            'shortDescription'=>request('shortDescription'),
+            'largDescription'=>request('largDescription'),
+            'authorNews'=>request('authorNews'),
+            'imageTitle'=>request('imageTitle'),
+            'imageSlug'=>request('imageSlug'),
+            'imageAuthor'=>request('imageAuthor'),
+            'status'=>request('status'),
+            'homeMain'=>request('homeMain'),
+            'newsMain'=>request('newsMain'),
+            'categorie_id'=>request('categorie_id')
     	]);
 
     	return redirect()-> route('news.index')->with('status', '!! Chicho, la noticia se ha creado correctamente');
@@ -58,6 +81,12 @@ class NewsController extends Controller
     	$news -> delete();
 
     	return redirect()->route('news.index',$news)->with('status', 'Chicho se ha eliminado la noticia');
+    }
+
+    public function test()
+    {
+        $news = News::get();
+        return view('test', compact('news'));
     }
 
 

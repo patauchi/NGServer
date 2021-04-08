@@ -57,4 +57,10 @@ class SpeciesController extends Controller
     	return redirect()->route('species.index', $species)->with('status', 'Chicho, La especie se ha eliminado');
     }
 
+    //     public function test()
+    // {
+    //     $news = Species::get();
+    //     return view('test', compact('news'));
+    // }
+
 }

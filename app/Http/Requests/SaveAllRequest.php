@@ -25,10 +25,30 @@ class SaveAllRequest extends FormRequest
     {
         return [
 
-            'title'=>'required',
-            'description' => 'required',
+            'metaTitle' => 'required',
+            'metaDescription' => 'required',
+            'pageSlug' => 'required',
+            'category' => 'required',
+            'subcategory' => 'required',
+            'title' => 'required',
+            'subtitle' => 'required',
+            'shortDescription' => 'required',
+            'largDescription' => 'required',
+            'authorNews' => 'required',
+            'imageTitle' => 'required',
+            'imageSlug' => 'required',
+            'imageAuthor'=>'required',
+            'status' => 'required',
+            'homeMain' => 'required',
+            'newsMain'=> 'required',
+            'categorie_id'=>'required'
+
 
         ];
+
+
+
+
     }
 
 public function messages()

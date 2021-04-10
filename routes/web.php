@@ -36,7 +36,20 @@ Route::resource('field-guide', 'SpeciesController')
 // Route::get('/field-guide/{species}','SpeciesController@show')->name('species.show');
 // Route::delete('/field-guide/{species}','SpeciesController@destroy')->name('species.destroy');
 
-Route::get('/test','NewsController@test');
+// Route::get('/test','NewsController@test');
+
+Route::resource('categories','CategoryController');
+
+// Route::get('/categories', 'CategoryController@index')->name('category.index');
+// Route::get('/categories/create', 'CategoryController@create')->name('category.create');
+// Route::post('/categories/store', 'CategoryController@store')->name('category.store');
+// Route::get('/categories/{category}/edit','CategoryController@edit')->name('category.edit');
+// Route::get('/categories/{category}','CategoryController@show')->name('category.show');
+
+//Route::resource('newsproject','NewsProjectController');
+
+Route::get('/news/{category}','NewsController@showCategory')->name('news.showCategory');
+
 
 
 Auth::routes();

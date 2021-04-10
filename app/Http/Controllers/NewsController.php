@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Newscategorie;
 use Illuminate\Http\Request;
 use App\Http\Requests\SaveAllRequest;
 
@@ -19,8 +20,9 @@ class NewsController extends Controller
 
     public function index()
     {
+        $categories = Newscategorie::get();
     	$news = News::get();
-        return view('news.newsIndex', compact('news'));
+        return view('news.newsIndex', compact('news','categories'));
     }
     public function create()
     {
@@ -83,11 +85,17 @@ class NewsController extends Controller
     	return redirect()->route('news.index',$news)->with('status', 'Chicho se ha eliminado la noticia');
     }
 
-    public function test()
-    {
-        $news = News::get();
-        return view('test', compact('news'));
-    }
+    // public function test()
+    // {
+    //     $news = News::get();
+    //     return view('test', compact('news'));
+    // }
 
+    public function showCategory(News $news)
+    {
+        return view('news.newsCategoryShow',[
+            'news' => $news
+        ]);
+    }
 
 }

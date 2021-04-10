@@ -33,14 +33,12 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown2">
 				<ul class="navbar-nav" style="font-size: 12px;">
-					<li class="nav-item active py-1"><a class="nav-link text-body" href="#">Climate</a></li>
-					<li class="nav-item  py-1"><a class="nav-link text-body" href="#">Science</a></li>
-					<li class="nav-item  py-1"><a class="nav-link text-body" href="#">Pollution</a></li>
-					<li class="nav-item  py-1"><a class="nav-link text-body" href="#">Energy</a></li>
-					<li class="nav-item  py-1"><a class="nav-link text-body" href="#">Wildlife</a></li>
-					<li class="nav-item  py-1"><a class="nav-link text-body" href="#">Biodiversity</a></li>
-					<li class="nav-item  py-1"><a class="nav-link text-body" href="#">Conservation</a></li>
-					<li class="nav-item  py-1"><a class="nav-link text-body" href="#">CheckBoard</a></li>
+
+					@forelse($categories as $category)
+					<li class="nav-item active py-1"><a class="nav-link text-body" href="#"> {{$category->name}} </a></li>
+					@empty
+						No hay catergorías para mostrar
+					@endforelse
 				</ul>
 			</div>
 
